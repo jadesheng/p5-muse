@@ -89,7 +89,7 @@ function draw() {
   }
 
   fill(255);
-  textSize(20)
+  textSize(20);
   text("Total Samples Processed: " + totalSamplesProcessed, 10, 20);
   text("Alpha: " + alpha, 10, 40);
   text("Beta : " + beta, 10, 60);
@@ -119,7 +119,7 @@ async function connect() {
           samples = samples.concat(reading.samples);
 
           // Keep track of this for reference.
-          totalSamplesProcessed += readings.samples.length;
+          totalSamplesProcessed += reading.samples.length;
 
           // If we have enough samples in our sample buffer,
           // then do the fft.
