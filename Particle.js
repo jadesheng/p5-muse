@@ -11,7 +11,7 @@ class Particle {
       this.drag = 0;
       this.gravity = createVector(0, 0, 0);
       
-      this.angle = createVector(0, 0, 0); 
+      this.angle = createVector(0, 0, -PI/2); //CHANGE 09
       this.angularVelocity = createVector(0, 0, 0);
       this.angularAcceleration = createVector(0, 0, 0);
       

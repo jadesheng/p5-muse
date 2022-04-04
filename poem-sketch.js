@@ -172,7 +172,7 @@ function draw() {
 
   for (let p of particles) {
     if (p.isDead) {
-      Something is getting undefined here ... ?
+      //Something is getting undefined here ... ?
       p.sound.play();
     }
   }

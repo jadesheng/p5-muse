@@ -126,7 +126,7 @@ function draw() {
   textSize(10);
   //text("Total Samples Processed: " + totalSamplesProcessed, 10, 20);
   //text("Alpha: " + alpha, 10, 40);
-  text("Beta : " + beta, 10, 40);
+  //text("Beta : " + beta, 10, 40);
   //text("Delta: " + delta, 10, 80);
   //text("Theta: " + theta, 10, 100);
 
@@ -144,13 +144,14 @@ function draw() {
   pop();
 
 
-  if (beta > 40){
+  if (beta > 50){
     numParticles = 2;
   }
+
   else if (beta == 0){
     numParticles = 0;
   }
-  else if (beta > 20 && beta < 27){
+  else if (beta > 20 && beta < 30){
     numParticles = 1;
   }
 
@@ -158,11 +159,11 @@ function draw() {
 
   shower();
   particles.forEach(p => {
-    if (beta > 40){
+    if (beta > 50){
       p.gravity = createVector(3,0,0); //CHANGE 03
       
     }
-    else if (beta > 27 && beta < 40){
+    else if (beta > 30 && beta < 50){
       p.gravity = createVector(0.5,0,0); //CHANGE 04
      
     }
@@ -357,7 +358,7 @@ function shower(){
     particle.isDead = false;
 
     particle.maxAge = random(40, 100);
-    particle.size = random(7,20);
+    particle.size = random(10,25); //CHANGE 10
     particle.gravity = createVector(1,0,0); //CHANGE 06
     particle.fill = colors[int(random(0,6))];
     particle.angularDrag = 0.01;
