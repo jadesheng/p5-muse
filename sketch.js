@@ -35,7 +35,7 @@ let words =["a", "b", "chhhht", "ding", "e", "pfff", "g", "hmmm", "i", "j", "kkk
 let words1 =["they don't see", "she was", "he hears", "it is", "what it is", "awakening", "that stranger", "God", "people", "needing someone", "I", "I have loved", "others", "was here", "you", "are now"]
 
 //let soundFileNames = ["assets/ping.wav"];
-
+let track1;
 //let sounds = [];
 
 let particles = [];
@@ -50,6 +50,7 @@ function preload() {
   //   sounds[i] = loadSound(soundFileNames[i])
   // }
 
+  track1 = loadSound("assets/ping.wav", loaded);
 }
 
 
@@ -126,7 +127,7 @@ function draw() {
   textSize(10);
   //text("Total Samples Processed: " + totalSamplesProcessed, 10, 20);
   //text("Alpha: " + alpha, 10, 40);
-  //text("Beta : " + beta, 10, 40);
+  text("Beta : " + beta, 10, 40);
   //text("Delta: " + delta, 10, 80);
   //text("Theta: " + theta, 10, 100);
 
@@ -144,14 +145,15 @@ function draw() {
   pop();
 
 
-  if (beta > 50){
+  if (beta > 550){
     numParticles = 2;
+    
   }
 
   else if (beta == 0){
     numParticles = 0;
   }
-  else if (beta > 20 && beta < 30){
+  else if (beta > 400 && beta < 550){
     numParticles = 1;
   }
 
@@ -159,11 +161,11 @@ function draw() {
 
   shower();
   particles.forEach(p => {
-    if (beta > 50){
+    if (beta > 550){
       p.gravity = createVector(3,0,0); //CHANGE 03
       
     }
-    else if (beta > 30 && beta < 50){
+    else if (beta > 400 && beta < 550){
       p.gravity = createVector(0.5,0,0); //CHANGE 04
      
     }
@@ -325,11 +327,11 @@ function shower(){
  
     particle.word = words[int(random(0,25))];
 
-    if (beta > 40){
+    if (beta > 550){
     particle.word = words[int(random(0,25))];}
-    else if (beta < 40 && beta > 27){
+    else if (beta < 550 && beta > 400){
     particle.word = words[int(random(26,42))];} 
-    else if (beta < 27){
+    else if (beta < 400){
       particle.word = words[int(random(43,57))];}
     //else (beta < 27){particle.word = words[int(random(43,57))];} 
 
