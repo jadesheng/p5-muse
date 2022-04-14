@@ -31,9 +31,11 @@ let colors = [100,150,200,255,255,255,255]
 // let words =["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z","past", "glimmer", "regrets", "future", "death", "life", "seconds", "minutes", "love", "fear", "familiar", "loss", "hope", "noise", "silence", "breath", "pain", "weight","they", "she", "he", "it", "what", "the", "stranger", "God", "nobody", "someone", "are", "stranger", "other", "I", "you", "is"]
 // let words1 =["they", "she", "he", "it", "what", "the", "stranger", "God", "nobody", "someone", "are", "stranger", "other", "I", "you", "is"]
 
-let words =["a", "b", "chhhht", "ding", "e", "pfff", "g", "hmmm", "i", "j", "kkkk", "l", "m", "n", "ooot", "p", "q", "r", "s", "tzk", "u", "v", "w", "x", "y", "fzzzz","past", "glimpse of life", "regrets", "future", "beyond death", "flicker", "seconds", "minutes", "be tired", "fear not", "familiar", "I am", "be angry", "noise", "silence", "breath", "painless", "of light","doesn't exist", "she is", "he hears not", "meaningless", "what", "the", "point", "Godless", "nobody", "someone", "are", "stranger", "other", "so", "you", "is"]
-let words1 =["they don't see", "she was", "he hears", "it is", "what it is", "awakening", "that stranger", "God", "people", "needing someone", "I", "I have loved", "others", "was here", "you", "are now"]
-
+let words =[ "she was", "he hears", "it is", "what it is", "awakening","past", "glimpse of life", "future", "beyond death", "was here", "you", "are now", "familiar", "I am", "silence", "breath", "painless", "of light", "she is", "seeking truth", "at peace"]
+let words1 =["they don't see",, "that stranger", "God", "people", "flicker","needing someone", "I", "I have loved", "others", "seconds", "minutes", "be tired", "fear not","he hears not", "meaningless", "what", "the", "point", "nobody", "someone", "are", "stranger", "other", "so", "you", "is"]
+let words2 = [ "Godless", "fear of", "meaningless", "be angry", "be lost", "endless", "floating", "noise", "call off", "the", "search", "pointless", "I have lost","glimpse of death", "regrets", "cease to exist", "no one", "gggg", "ptttt", "fkfk", "haha","shhhh","oooot","dnkdnk"];
+let words3 = ["a", "b", "chhhht", "ding", "e", "pfff", "g", "hmmm", "i", "j", "kkkk", "l", "m", "n", "ooot", "p", "q", "r", "s", "tzk", "u", "v", "w", "x", "y","fzzzz"];
+let words4 = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 //let soundFileNames = ["assets/ping.wav"];
 let track1;
 //let sounds = [];
@@ -145,15 +147,24 @@ function draw() {
   pop();
 
 
-  if (beta > 550){
-    numParticles = 2;
+  if (beta > 500){
+    numParticles = 3;
     
   }
 
   else if (beta == 0){
     numParticles = 0;
   }
-  else if (beta > 400 && beta < 550){
+
+  else if (beta > 400 && beta < 500){
+    numParticles = 2;
+  }
+
+  else if (beta > 200 && beta < 400){
+    numParticles = 1;
+  }
+
+  else if (beta > 50 && beta < 200){
     numParticles = 1;
   }
 
@@ -162,14 +173,26 @@ function draw() {
   shower();
   particles.forEach(p => {
     if (beta > 550){
-      p.gravity = createVector(3,0,0); //CHANGE 03
+      p.gravity = createVector(5,0,0);
+      p.maxAge = random(15, 25); //CHANGE 03
       
     }
     else if (beta > 400 && beta < 550){
-      p.gravity = createVector(0.5,0,0); //CHANGE 04
-     
+      p.gravity = createVector(3,0,0);
+      p.maxAge = random(20, 50); //CHANGE 04
     }
-    else {p.gravity = createVector(0.05,0,0); //CHANGE05
+
+    else if (beta > 200 && beta < 400){
+      p.gravity = createVector(1,0,0);
+      p.maxAge = random(30, 60);
+    }
+  
+    else if (beta > 50 && beta < 200){
+      p.gravity = createVector(0.5,0,0);
+    }
+
+    else {p.gravity = createVector(0,0,0);
+      p.maxAge = random(60, 100); //CHANGE05
       
       }
     p.update();
@@ -325,14 +348,24 @@ function shower(){
     shuffle(color,true);
     //shuffle(words,true);
  
-    particle.word = words[int(random(0,25))];
+    particle.word = words[int(random(words.length))];
 
     if (beta > 550){
-    particle.word = words[int(random(0,25))];}
+    particle.word = words4[int(random(words4.length))];}
+
     else if (beta < 550 && beta > 400){
-    particle.word = words[int(random(26,42))];} 
-    else if (beta < 400){
-      particle.word = words[int(random(43,57))];}
+    particle.word = words3[int(random(words3.length))];} 
+
+    else if (beta > 200 && beta < 400){
+      particle.word = words2[int(random(words2.length))];
+    }
+    else if (beta > 50 && beta < 200){
+      particle.word = words1[int(random(words1.length))];
+    }
+
+    else{
+      particle.word = words[int(random(words.length))];}
+
     //else (beta < 27){particle.word = words[int(random(43,57))];} 
 
     
