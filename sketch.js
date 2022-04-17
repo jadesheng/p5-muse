@@ -384,7 +384,7 @@ function shower(){
     // for (i % 6 === 0) {
 
   
-    // }
+    // }  
 
 
     // if (particle.word === "death") {
