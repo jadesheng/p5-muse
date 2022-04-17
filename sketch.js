@@ -27,7 +27,8 @@ let delta = 0;
 let gyro;
 let accel;
 
-let colors = [100,150,200,255,255,255,255]
+let colors = [50,100,150,200,255,255,255,"#bdffee", "#bdd4ff","#e1bdff","#ffbdd4"]
+
 // let words =["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z","past", "glimmer", "regrets", "future", "death", "life", "seconds", "minutes", "love", "fear", "familiar", "loss", "hope", "noise", "silence", "breath", "pain", "weight","they", "she", "he", "it", "what", "the", "stranger", "God", "nobody", "someone", "are", "stranger", "other", "I", "you", "is"]
 // let words1 =["they", "she", "he", "it", "what", "the", "stranger", "God", "nobody", "someone", "are", "stranger", "other", "I", "you", "is"]
 
@@ -303,7 +304,7 @@ async function disconnect() {
 }
 
 function drawParticle(particle) {
-  let ageSize = map(particle.age, 0, particle.maxAge, 0, 0.1);
+  let ageSize = map(particle.age, 0, particle.maxAge, 0, 0.2);
   
   push();
   translate(particle.position.x, particle.position.y);
@@ -345,25 +346,30 @@ function shower(){
     particle.acceleration = p5.Vector.fromAngle(radians(random(0, 360)), random(1, 7));
     particle.angularAcceleration = createVector(radians(random(-90, 90)), radians(random(-90, 90)), radians(random(-2, 2)));  
     particle.drag = 0.01;
-    shuffle(color,true);
+    //shuffle(color,true);
     //shuffle(words,true);
  
     particle.word = words[int(random(words.length))];
 
     if (beta > 550){
+      particle.fill = 50
     particle.word = words4[int(random(words4.length))];}
 
     else if (beta < 550 && beta > 400){
+      particle.fill = 100
     particle.word = words3[int(random(words3.length))];} 
 
     else if (beta > 200 && beta < 400){
+      particle.fill = 150
       particle.word = words2[int(random(words2.length))];
     }
     else if (beta > 50 && beta < 200){
+      particle.fill = 200
       particle.word = words1[int(random(words1.length))];
     }
 
     else{
+      particle.fill = colors[int(random(0,6))];
       particle.word = words[int(random(words.length))];}
 
     //else (beta < 27){particle.word = words[int(random(43,57))];} 
@@ -395,9 +401,9 @@ function shower(){
     particle.maxAge = random(40, 100);
     particle.size = random(10,25); //CHANGE 10
     particle.gravity = createVector(1,0,0); //CHANGE 06
-    particle.fill = colors[int(random(0,6))];
+    //particle.fill = colors[int(random(0,6))];
     particle.angularDrag = 0.01;
-    particle.position = createVector(100, height/2, 0); //CHANGE07
+    particle.position = createVector(300, height/2, 0); //CHANGE07
     particles.push(particle);  
     //particle.velocity = createVector(0,0,0);
   }
