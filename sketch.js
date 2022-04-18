@@ -174,22 +174,22 @@ function draw() {
   shower();
   particles.forEach(p => {
     if (beta > 550){
-      p.gravity = createVector(5,0,0);
+      p.gravity = createVector(0,5,0);
       p.maxAge = random(15, 25); //CHANGE 03
       
     }
     else if (beta > 400 && beta < 550){
-      p.gravity = createVector(3,0,0);
+      p.gravity = createVector(0,3,0);
       p.maxAge = random(20, 50); //CHANGE 04
     }
 
     else if (beta > 200 && beta < 400){
-      p.gravity = createVector(1,0,0);
+      p.gravity = createVector(0,1,0);
       p.maxAge = random(30, 60);
     }
   
     else if (beta > 50 && beta < 200){
-      p.gravity = createVector(0.5,0,0);
+      p.gravity = createVector(0,0.5,0);
     }
 
     else {p.gravity = createVector(0,0,0);
@@ -325,10 +325,10 @@ function drawParticle(particle) {
   if (particle.size - ageSize <= 0) {
     particle.isDead = true;
    }
-  if (particle.position.x > width-350)  //CHANGE 07
+  if (particle.position.y > height-100)  //CHANGE 07
   {
-    particle.position.x = width-350;   //CHANGE 08
-    particle.velocity.x *= random(-0.9,-0.5);  //CHANGE 09
+    particle.position.y = height-100;   //CHANGE 08
+    particle.velocity.y *= random(-0.9,-0.5);  //CHANGE 09
   }
   // if (particle.position.y > height/2+160 && particle.position.x > width/2-115 && particle.position.x < width/2+115)
   // {
@@ -352,19 +352,19 @@ function shower(){
     particle.word = words[int(random(words.length))];
 
     if (beta > 550){
-      particle.fill = 50
+      //particle.fill = 50
     particle.word = words4[int(random(words4.length))];}
 
     else if (beta < 550 && beta > 400){
-      particle.fill = 100
+      //particle.fill = 100
     particle.word = words3[int(random(words3.length))];} 
 
     else if (beta > 200 && beta < 400){
-      particle.fill = 150
+      //particle.fill = 150
       particle.word = words2[int(random(words2.length))];
     }
     else if (beta > 50 && beta < 200){
-      particle.fill = 200
+      //particle.fill = 200
       particle.word = words1[int(random(words1.length))];
     }
 
@@ -398,12 +398,12 @@ function shower(){
 
     particle.isDead = false;
 
-    particle.maxAge = random(40, 100);
-    particle.size = random(10,25); //CHANGE 10
-    particle.gravity = createVector(1,0,0); //CHANGE 06
-    //particle.fill = colors[int(random(0,6))];
+    particle.maxAge = random(30, 80);
+    particle.size = random(8,20); //CHANGE 10
+    particle.gravity = createVector(0,1,0); //CHANGE 06
+    particle.fill = colors[int(random(0,6))];
     particle.angularDrag = 0.01;
-    particle.position = createVector(300, height/2, 0); //CHANGE07
+    particle.position = createVector(width/2, 200, 0); //CHANGE07
     particles.push(particle);  
     //particle.velocity = createVector(0,0,0);
   }

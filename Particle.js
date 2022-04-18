@@ -11,7 +11,7 @@ class Particle {
       this.drag = 0;
       this.gravity = createVector(0, 0, 0);
       
-      this.angle = createVector(0, 0, -PI/2); //CHANGE 09
+      this.angle = createVector(0, 0, 0); //CHANGE 09
       this.angularVelocity = createVector(0, 0, 0);
       this.angularAcceleration = createVector(0, 0, 0);
       
@@ -35,7 +35,7 @@ class Particle {
     
     update() {
       // Scale the velocity by the drag scalar.
-      this.velocity.mult(constrain(0,(1 - this.drag), 1)); //CHANGE 01
+      this.velocity.mult(constrain((1 - this.drag),0, 1)); //CHANGE 01
       // Add the gravity acceleration to the velocity.
       this.velocity.add(this.gravity);
       // Add any additional accelerations to the velocity.
@@ -54,7 +54,7 @@ class Particle {
       this.position.add(this.velocity);
       
       // Scale the angular velocity by the angular drag scalar.    
-      this.angularVelocity.mult(constrain(0, (1 - this.angularDrag), 1)); //CHANGE 02
+      this.angularVelocity.mult(constrain((1 - this.angularDrag),0, 1)); //CHANGE 02
       /// Add any additional accelerations to the angular acceleration.
       this.angularVelocity.add(this.angularAcceleration);
   
