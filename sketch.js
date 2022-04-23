@@ -58,7 +58,7 @@ function preload() {
 
 
 function setup() {
-  createCanvas(1980, 1080);
+  createCanvas(1700, 1080);
   background(0);
   noCursor();
   client = new muse.musejs.MuseClient();
@@ -130,7 +130,7 @@ function draw() {
   textSize(10);
   //text("Total Samples Processed: " + totalSamplesProcessed, 10, 20);
   //text("Alpha: " + alpha, 10, 40);
-  text("Beta : " + beta, 10, 40);
+  //text("Beta : " + beta, 10, 40);
   //text("Delta: " + delta, 10, 80);
   //text("Theta: " + theta, 10, 100);
 
